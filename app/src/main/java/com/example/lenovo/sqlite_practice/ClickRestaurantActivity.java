@@ -62,7 +62,7 @@ public class ClickRestaurantActivity extends AppCompatActivity {
         initialDishList(RestaurantId);
 
         ListView listView = (ListView)findViewById(R.id.listview);
-        final ListViewAdapterforDishes adapterforDishes = new ListViewAdapterforDishes(this,R.layout.dishes_item,mList);
+        final ListViewAdapterforDishes adapterforDishes = new ListViewAdapterforDishes(ClickRestaurantActivity.this,R.layout.dishes_item,mList);
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -73,6 +73,7 @@ public class ClickRestaurantActivity extends AppCompatActivity {
             }
         });
 
+        /*按下加按钮，向订单里添加菜品*/
         adapterforDishes.setOnAddButtonClickListener(new AddDishClickListener() {
             @Override
             public void onClick(View view, Dish dish) {
@@ -99,6 +100,7 @@ public class ClickRestaurantActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(ClickRestaurantActivity.this,ThisOrderActivity.class);
+                in.putExtra("OrderId",OrderId);
                 startActivity(in);
             }
         });
@@ -109,6 +111,7 @@ public class ClickRestaurantActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(ClickRestaurantActivity.this,HandInOrderSuccessActivity.class);
+                intent1.putExtra("OrderId",OrderId);
                 startActivity(intent1);
             }
         });
