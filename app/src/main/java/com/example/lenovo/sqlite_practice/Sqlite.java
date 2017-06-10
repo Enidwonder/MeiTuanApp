@@ -17,25 +17,25 @@ public class Sqlite extends SQLiteOpenHelper {
     }
 
     public static final String CREATE_RESTAURANT = "create table Restaurant("
-            + "id integer primary key autoincrement,"
+            + "id integer primary key autoincrement not null,"
             + "name text,"
             + "address text,"
             + "introduction text,"
             + "phone text,"
             + "recount text,"
-            + "priceAtLeast float,"
+            + "priceAtLeast real,"
             + "time text,"
             + "photoPath text,"
-            + "sendFee float)";
+            + "sendFee real)";
 
     public static final String CREATE_DISHES = "create table Dishes("
             + "id integer primary key autoincrement,"
             + "name text,"
             + "ingredients text,"
-            + "price float,"
+            + "price real,"
             + "photoPath text,"
             + "restaurantId integer,"
-            + "priceOfBox float,"
+            + "priceOfBox real,"
             + "orderedAmount integer,"
             + "foreign key (restaurantId) references Restaurant(id) on delete cascade)";
 
@@ -44,7 +44,8 @@ public class Sqlite extends SQLiteOpenHelper {
             + "restaurantId integer,"
             + "userId integer,"
             + "dishes text,"
-            + "total_price integer,"
+            + "total_price real,"
+            + "completedOrNot text,"
             + "foreign key (restaurantId) references Restaurant(id) on delete cascade)";
 
     public static final String CREATE_COMMENTforRESTAURANT = "create table CommentForRes("

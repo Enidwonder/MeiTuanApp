@@ -36,7 +36,7 @@ public class ListViewAdapterforDishes extends ArrayAdapter<Dish> {
         TextView price;
     }
 
-    public void setOnButtonClickListener(AddDishClickListener listener){
+    public void setOnAddButtonClickListener(AddDishClickListener listener){
         onClickListener = listener;
     }
 
@@ -50,15 +50,6 @@ public class ListViewAdapterforDishes extends ArrayAdapter<Dish> {
             view = LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
             holder = new ViewHolder();
             holder.addButton = (ImageView)view.findViewById(R.id.addToOrder);
-            holder.addButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onClickListener != null){
-                        onClickListener.onClick(view,dish.getId());
-                    }
-
-                }
-            });
             holder.offButton = (ImageView)view.findViewById(R.id.offDish);
             holder.dishAmount = (TextView)view.findViewById(R.id.dish_amount);
             holder.dish_name = (TextView)view.findViewById(R.id.dishes_name);
@@ -69,8 +60,18 @@ public class ListViewAdapterforDishes extends ArrayAdapter<Dish> {
             holder = (ViewHolder)view.getTag();
         }
 
+        holder.dishAmount.setText(String.valueOf(dish.getOrderedAmount()));
         holder.price.setText(String.valueOf(dish.getPrice()));
         holder.dish_name.setText(dish.getDish_name());
+        holder.addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickListener != null){
+                    onClickListener.onClick(view,dish);
+                }
+
+            }
+        });
         return view;
     }
 }

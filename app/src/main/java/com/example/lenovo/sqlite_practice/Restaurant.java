@@ -39,4 +39,6 @@ public class Restaurant {
     String getName(){return name;};
     String getAddress(){return address;};
     String getIntroduction(){return introduction;};
+
+
 }

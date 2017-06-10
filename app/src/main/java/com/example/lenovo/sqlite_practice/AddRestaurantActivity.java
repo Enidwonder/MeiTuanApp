@@ -20,10 +20,10 @@ public class AddRestaurantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurant);
 
-        EditText name = (EditText)findViewById(R.id.enter_name);
-        EditText address = (EditText)findViewById(R.id.enter_address);
-        EditText phone = (EditText)findViewById(R.id.enter_phone);
-        EditText introduction = (EditText)findViewById(R.id.enter_introduction);
+        final EditText name = (EditText)findViewById(R.id.enter_name);
+        final EditText address = (EditText)findViewById(R.id.enter_address);
+        final EditText phone = (EditText)findViewById(R.id.enter_phone);
+        final EditText introduction = (EditText)findViewById(R.id.enter_introduction);
         ImageView addPhoto = (ImageView)findViewById(R.id.enter_photo);
         Button addButton = (Button)findViewById(R.id.add_button);
 
@@ -34,17 +34,18 @@ public class AddRestaurantActivity extends AppCompatActivity {
             }
         });
 
-        final String Rname = name.toString();
-        final String Raddress = address.toString();
-        final String Rphone = phone.toString();
-        final String Rintroduction = introduction.toString();
 
-        dbHelper = new Sqlite(this,"Meituan.db",null,1);
+
+        dbHelper = new Sqlite(this,"MeiTuan1.db",null,1);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 ContentValues values = new ContentValues();
+                final String Rname = name.getText().toString();
+                final String Raddress = address.getText().toString();
+                final String Rphone = phone.getText().toString();
+                final String Rintroduction = introduction.getText().toString();
                 values.put("name",Rname);
                 values.put("address",Raddress);
                 values.put("phone",Rphone);

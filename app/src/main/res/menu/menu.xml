@@ -4,13 +4,14 @@
 
     <item
         android:id="@+id/add_restaurant"
-        android:title="add restaurant"
+        android:title="添加饭店"
         app:showAsAction="withText"
         />
 
     <item
-        android:id="@+id/delete_restaurant"
-        android:title="delete restaurant"/>
+        android:id="@+id/AllOrders"
+        android:title="所有订单"
+        app:showAsAction="withText"/>
 
 
 

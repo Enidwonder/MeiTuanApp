@@ -7,5 +7,5 @@ import android.view.View;
  */
 
 public interface AddDishClickListener {
-    void onClick(View view,int dishId);
+    void onClick(View view,Dish dish);
 }

@@ -7,12 +7,14 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             }
+            case R.id.AllOrders:{
+                Intent intent = new Intent(MainActivity.this,Order_showActivity.class);
+                startActivity(intent);
+                break;
+            }
         }
         return true;
     }
@@ -52,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new Sqlite(this,"MeiTuan1.db",null,1);
         initialList();
 
-
         ListView listView = (ListView)findViewById(R.id.res_listview);
         TextView restaurant_name = (TextView)findViewById(R.id.restaurant_name);
         TextView introduction = (TextView)findViewById(R.id.introduction);
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         emptyView = findViewById(R.id.empty);
         listView.setEmptyView(emptyView);
+
 
         final ListViewAdapter adapter = new ListViewAdapter(MainActivity.this,R.layout.list_item,mList);
         listView.setAdapter(adapter);
@@ -92,12 +99,13 @@ public class MainActivity extends AppCompatActivity {
     /*initial the List*/
     public void initialList(){
         SQLiteDatabase database = dbHelper.getWritableDatabase();
-        Restaurant restaurant = new Restaurant();
+        Restaurant restaurant = null;
 
         Cursor cursor = database.query("Restaurant",null,null,null,null,null,null);
         /* to search all the datas in the table Restaurant*/
         if(cursor.moveToFirst()){
             do{
+                restaurant = new Restaurant();
                 String name = cursor.getString(cursor.getColumnIndex("name"));
                 restaurant.setName(name);
                 String address = cursor.getString(cursor.getColumnIndex("address"));

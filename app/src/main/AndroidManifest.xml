@@ -17,7 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ClickRestaurantActivity" />
-        <activity android:name=".AddRestaurantActivity"></activity>
+        <activity android:name=".AddRestaurantActivity" />
+        <activity android:name=".Order_showActivity" />
+        <activity android:name=".ThisOrderActivity" />
+        <activity android:name=".HandInOrderSuccessActivity"></activity>
     </application>
 
 </manifest>
