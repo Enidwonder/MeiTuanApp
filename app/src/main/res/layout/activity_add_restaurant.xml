@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lenovo.sqlite_practice.AddRestaurantActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Add a restaurant"
+        android:textColor="#060606"
+        android:textSize="30sp"
+        android:id="@+id/add_title"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/add_title"
+        android:hint="Enter the name here"
+        android:id="@+id/enter_name"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/enter_name"
+        android:hint="Enter the address here"
+        android:id="@+id/enter_address"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/enter_address"
+        android:hint="Enter the phone number here"
+        android:id="@+id/enter_phone"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/enter_phone"
+        android:hint="please enter introdutions to your restaurant to let customers know more"
+        android:id="@+id/enter_introduction"/>
+
+
+    <ImageView
+        android:id="@+id/enter_photo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/add_photo"
+        android:layout_below="@+id/enter_introduction"
+        android:layout_toLeftOf="@+id/add_title"
+        android:layout_toStartOf="@+id/add_title"
+        android:layout_marginTop="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="add"
+        android:id="@+id/add_button"/>
+</RelativeLayout>
